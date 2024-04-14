@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ChildComponent from "./ChildComponent";
+import SiblingComponent from "./SiblingComponent";
 
-function App() {
+const ParentComponent = () => {
+  const maxNum = 10,
+    minNum = 0,
+    name = "Pasha",
+    defaultTxt = "text";
+  const [count, setCount] = useState(0);
+
+  const increase = () => {
+    setCount(count + 1);
+  };
+
+  const reset = () => {
+    setCount(count - count);
+  };
+
+  const random = () => {
+    setCount(Math.floor(minNum + Math.random() * (maxNum + 1 - minNum)));
+  };
+
+  const decrease = () => {
+    setCount(count - 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <label>
+        Увеличить на 1 <button onClick={increase}>Увеличить</button>
+      </label>
+      <br />
+
+      <label>
+        Сбросить значение <button onClick={reset}>Сбросить</button>
+      </label>
+      <br />
+
+      <label>
+        Случайное значение от 1 до 10 <button onClick={random}>Рандом</button>
+      </label>
+      <br />
+
+      <label>
+        Уменьшить на 1 <button onClick={decrease}>Уменьшить</button>
+      </label>
+      <br />
+
+      <p>{count}</p>
+
+      <ChildComponent name={name} count={count} />
+
+      <SiblingComponent defaultTxt={defaultTxt} />
     </div>
   );
-}
+};
 
-export default App;
+export default ParentComponent;
