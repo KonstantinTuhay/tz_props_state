@@ -8,13 +8,14 @@ const ParentComponent = () => {
     name = "Pasha",
     defaultTxt = "text";
   const [count, setCount] = useState(0);
+  const [txt, setTxt] = useState(defaultTxt);
 
   const increase = () => {
-    setCount(count + 1);
+    setCount((count) => count + 1);
   };
 
   const reset = () => {
-    setCount(count - count);
+    setCount(0);
   };
 
   const random = () => {
@@ -22,7 +23,7 @@ const ParentComponent = () => {
   };
 
   const decrease = () => {
-    setCount(count - 1);
+    setCount((count) => count - 1);
   };
 
   return (
@@ -51,7 +52,7 @@ const ParentComponent = () => {
 
       <ChildComponent name={name} count={count} />
 
-      <SiblingComponent defaultTxt={defaultTxt} />
+      <SiblingComponent txt={txt} setTxt={setTxt} />
     </div>
   );
 };

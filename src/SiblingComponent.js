@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const SiblingComponent = ({ defaultTxt }) => {
-  const [txt, setTxt] = useState(defaultTxt);
-
+const SiblingComponent = ({ txt, setTxt }) => {
   const changeTxt = () => {
     setTxt("REDEV");
   };
